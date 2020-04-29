@@ -4,7 +4,7 @@ android {
   compileSdkVersion 29
   defaultConfig {
     applicationId "com.github.lotty520.assemble"
-    minSdkVersion 15
+    minSdkVersion 19
     targetSdkVersion 29
     versionCode 1
     versionName "1.0"
@@ -20,9 +20,7 @@ android {
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'com.lotty520:mango:1.6.2'
-  implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-  implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+  implementation project(':pack')
   // easy permission
   implementation('pub.devrel:easypermissions:2.0.0') {
     exclude group: "com.android.support"

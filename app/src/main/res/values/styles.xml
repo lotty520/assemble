@@ -1,15 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
 
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
-        <!--<item name="android:colorBackgroundCacheHint">@null</item>-->
-        <!--<item name="android:windowIsTranslucent">true</item>-->
-        <!--<item name="android:windowAnimationStyle">@android:style/Animation</item>-->
-        <!--<item name="android:windowNoTitle">true</item>-->
-        <!--<item name="android:windowContentOverlay">@null</item>-->
-
-    </style>
+  </style>
 
 </resources>

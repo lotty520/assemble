@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">X</string>
-    <string name="permission_ask">应用正常运行依赖该权限，请通过权限请求</string>
-    <string name="permission_ask_again">应用需要特定权限才能正常运行，请前往设置页面打开相关权限</string>
-    <string name="permission_ask_title">权限申请</string>
-
 </resources>

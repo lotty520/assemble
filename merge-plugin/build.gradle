@@ -1,0 +1,92 @@
+apply plugin: 'groovy'
+apply plugin: "maven-publish"
+apply plugin: 'com.jfrog.bintray'
+
+//Groovy 编译选项
+compileGroovy {
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+  options.encoding = "UTF-8"
+}
+
+// 依赖
+dependencies {
+  implementation gradleApi()
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  from 'build/docs/javadoc'
+  archiveClassifier = 'javadoc'
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  archiveClassifier = 'sources'
+}
+
+// pom配置
+def pomConfig = {
+  licenses {
+    license {
+      name "The Apache Software License, Version 2.0"
+      url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+      distribution "repo"
+    }
+  }
+  developers {
+    developer {
+      id "lotty"
+      name "lotty-tj"
+      email "wuh24.tj@gmail.com"
+    }
+  }
+
+  scm {
+    url "https://github.com/lotty520/assemble"
+  }
+}
+
+def bintrayUser = rootProject.properties.get("bintray.user")
+def bintrayKey = rootProject.properties.get("bintray.apikey")
+def pluginVersion = rootProject.properties.get("plugin.version")
+
+bintray {
+  user = bintrayUser
+  key = bintrayKey
+  publications = ['mergePlugin']
+  pkg {
+    repo = 'maven'
+    name = 'assemble'
+    userOrg = 'lotty-tj'
+    licenses = ['Apache-2.0']
+    vcsUrl = 'https://github.com/lotty520/assemble.git'
+    publish = true
+    version {
+      name = pluginVersion
+      desc = 'assemble all module classes or jar to onlyone aar'
+      released = new Date()
+    }
+  }
+}
+
+
+publishing {
+  publications {
+    mergePlugin(MavenPublication) {
+      from components.java
+      artifact sourcesJar
+      artifact javadocJar
+
+      groupId 'com.github.merge'
+      artifactId 'plugin'
+      version pluginVersion
+      pom.withXml {
+        def root = asNode()
+        root.appendNode('url', 'https://github.com/lotty520/assemble')
+        root.children().last() + pomConfig
+      }
+    }
+  }
+}
+
+
