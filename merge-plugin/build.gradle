@@ -12,6 +12,8 @@ compileGroovy {
 // 依赖
 dependencies {
   implementation gradleApi()
+  implementation 'com.android.tools.build:gradle:3.6.3'
+
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
@@ -77,8 +79,8 @@ publishing {
       artifact sourcesJar
       artifact javadocJar
 
-      groupId 'com.github.merge'
-      artifactId 'plugin'
+      groupId 'com.github.lotty520'
+      artifactId 'merge'
       version pluginVersion
       pom.withXml {
         def root = asNode()
