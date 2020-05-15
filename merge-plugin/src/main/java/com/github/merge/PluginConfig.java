@@ -1,27 +1,28 @@
 package com.github.merge;
 
+import java.util.Arrays;
+
+/**
+ * @author lotty
+ */
 public class PluginConfig {
 
   /**
-   * 包含的路径
-   */
-  public String[] include;
-  /**
-   * 不包含的路径
-   */
-  public String[] exclude;
-  /**
-   * 选择的加解密类型
-   */
-  public String encType;
-
-  /**
-   * 自定义解密的包名
+   * 主模块名
    */
   public String pkg;
+  /**
+   * 包含的模块
+   */
+  public String[] libs;
 
   /**
    * 是否打印日志
    */
   public boolean logOpen;
+
+  @Override
+  public String toString() {
+    return "logOpen=" + logOpen + ", pkg=" + pkg + ", libs=" + Arrays.toString(libs);
+  }
 }

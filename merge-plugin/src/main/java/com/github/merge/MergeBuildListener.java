@@ -8,13 +8,14 @@ import org.gradle.api.invocation.Gradle;
 
 /**
  * 监听构建事件的起点、终点
+ *
  * @author lotty
  */
-public class MergeBuildListner implements BuildListener {
+public class MergeBuildListener implements BuildListener {
 
   private Project hostProject;
 
-  public MergeBuildListner(Project hostProject) {
+  public MergeBuildListener(Project hostProject) {
     this.hostProject = hostProject;
   }
 
@@ -23,19 +24,21 @@ public class MergeBuildListner implements BuildListener {
   }
 
   @Override public void beforeSettings(Settings settings) {
-    System.out.println("BuildListener:beforeSettings");
+    System.out.println(":BuildListener:beforeSettings");
   }
 
   @Override public void settingsEvaluated(Settings settings) {
-    System.out.println("BuildListener:settingsEvaluated");
+    System.out.println(":BuildListener:settingsEvaluated");
   }
 
   @Override public void projectsLoaded(Gradle gradle) {
-    System.out.println("BuildListener:projectsLoaded");
+    System.out.println(":BuildListener:projectsLoaded");
   }
 
   @Override public void projectsEvaluated(Gradle gradle) {
     System.out.println(":BuildListener:projectsEvaluated");
+    PluginConfig config = (PluginConfig) hostProject.getExtensions().getByName("mergeExt");
+    System.out.println(":Plugin Config:" + config.toString());
   }
 
   @Override public void buildFinished(BuildResult buildResult) {

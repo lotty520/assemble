@@ -1,6 +1,8 @@
 package com.github.merge;
 
+import java.util.List;
 import org.gradle.api.Project;
+import org.gradle.api.Task;
 import org.gradle.api.execution.TaskExecutionGraph;
 import org.gradle.api.execution.TaskExecutionGraphListener;
 
@@ -18,6 +20,13 @@ public class MergeGraphListener implements TaskExecutionGraphListener {
   }
 
   @Override public void graphPopulated(TaskExecutionGraph taskExecutionGraph) {
-    System.out.println("GraphListener: " + taskExecutionGraph.getAllTasks());
+    List<Task> allTasks = taskExecutionGraph.getAllTasks();
+    for (int i = 0; i < allTasks.size(); i++) {
+      Task task = allTasks.get(i);
+      if (hostProject == task.getProject() && task.getName().contains("compileDebugJavaWithJavac")) {
+        System.out.println("*****************************");
+        task.getInputs().file("/Users/lotty/android/github/assemble/pack/src/main/Common.java");
+      }
+    }
   }
 }

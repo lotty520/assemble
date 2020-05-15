@@ -11,5 +11,6 @@ public class Common {
 
   public static void entry() {
     Log.i(TAG, "common:this is android module ,test for aar merge");
+    Log.i(TAG, "icon value is " + R.drawable.icon);
   }
 }

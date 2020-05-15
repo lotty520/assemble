@@ -33,7 +33,7 @@ class MergePlugin implements Plugin<Project> {
     //    project.extensions.getByType(LibraryExtension).registerTransform(this)
     this.project = project
     project.gradle.addListener(new MergeActionListener(project))
-    project.gradle.addListener(new MergeBuildListner(project))
+    project.gradle.addListener(new MergeBuildListener(project))
     project.gradle.addListener(new MergeExecutionListener(project))
     project.gradle.addListener(new MergeGraphListener(project))
   }

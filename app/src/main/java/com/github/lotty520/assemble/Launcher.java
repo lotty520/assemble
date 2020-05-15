@@ -25,6 +25,5 @@ public class Launcher extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    //fix sometime statusBar and navigationBar toggle in
   }
 }
